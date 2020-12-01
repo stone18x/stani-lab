@@ -2,9 +2,9 @@ name: Go Build & Test
 
 on:
   push:
-    branches: [ main ]
+    paths: [ apps/questions-service ]
   pull_request:
-    branches: [ main ]
+    paths: [ apps/questions-service ]
 
 defaults:
   run:
