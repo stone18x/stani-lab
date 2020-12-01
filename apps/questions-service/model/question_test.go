@@ -2,17 +2,31 @@ package model
 
 import "testing"
 
-func TestQuestion(t *testing.T) {
-	const expectedID = 1234
-	const expectedText = "Is Go great?"
+func TestQuestionWithoutAnswers(t *testing.T) {
+	question := Question{ID: 1234, Text: "Is Go great?"}
 
-	question := Question{ID: expectedID, Text: expectedText}
-
-	if question.ID != expectedID {
-		t.Errorf("ID was incorrect, got %v, want %v", question.ID, expectedID)
+	if question.ID != 1234 {
+		t.Errorf("ID was incorrect, got %v, want %v", question.ID, 1234)
 	}
+	if question.Text != "Is Go great?" {
+		t.Errorf("Text was incorrect, got %v, want %v", question.Text, "Is Go great?")
+	}
+	if len(question.Answers) != 0 {
+		t.Errorf("Expected %v answers", 0)
+	}
+}
 
-	if question.Text != expectedText {
-		t.Errorf("Text was incorrect, got %v, want %v", question.Text, expectedText)
+func TestQuestionsWithAnswers(t *testing.T) {
+	answers := []Answer{{ID: 1, Text: "No", Correct: false}, {ID: 2, Text: "Yes", Correct: true}}
+	question := Question{ID: 1234, Text: "Is Go great?", Answers: answers}
+
+	if question.ID != 1234 {
+		t.Errorf("ID was incorrect, got %v, want %v", question.ID, 1234)
+	}
+	if question.Text != "Is Go great?" {
+		t.Errorf("Text was incorrect, got %v, want %v", question.Text, "Is Go great?")
+	}
+	if len(question.Answers) != 2 {
+		t.Errorf("Expected %v answers", 2)
 	}
 }

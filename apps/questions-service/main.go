@@ -1,12 +1,10 @@
 package main
 
 import (
-	"fmt"
-
-	"com.stani.questionsservice/model"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	question := model.Question{ID: 123, Text: "How old  are you?"}
-	fmt.Printf(question.Text)
+	app := App{Router: mux.NewRouter()}
+	app.Run(8080)
 }
