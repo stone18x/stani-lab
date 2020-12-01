@@ -6,8 +6,11 @@ on:
   pull_request:
     branches: [ main ]
 
-jobs:
+defaults:
+  run:
+    working-directory: apps/questions-service
 
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
