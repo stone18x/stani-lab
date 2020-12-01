@@ -22,7 +22,6 @@ func (a *App) Run(port int) {
 	subRouter.HandleFunc("/questions", returnQuestions).Methods("GET")
 	log.Printf("Go web server started at port: %d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), a.Router))
-	log.Printf("test")
 }
 
 func returnQuestions(w http.ResponseWriter, r *http.Request) {
